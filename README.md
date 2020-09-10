@@ -15,3 +15,5 @@ Minimal Viable Product Goals:
 Post-MVP Goals:
     - Add a different shaped board (user chooses between normal and non-normal shape)
     - Add additonal boundaries/barriers to make game more interesting 
+
+    
