@@ -1,8 +1,8 @@
 h1 {
     text-align: center;
     color: white;
-    font-size: 50px;
-    background: grey;
+    font-size: 7vh;
+    background: #3772FF;
 }
 body {
     background: #12130f;
@@ -15,7 +15,9 @@ body {
 }
 #userTurn p {
     font-size: 40px;
+    padding: 10px;
 }
+
 #gameBoard {
     background-color: #3772FF;  
     display: grid;
