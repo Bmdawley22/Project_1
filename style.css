@@ -17,12 +17,26 @@ body {
     font-size: 40px;
     padding: 10px;
 }
-
+#arrowIcons {
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 80vw;
+    margin: 2vh auto;
+}
+.arrow {
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: auto;
+    object-fit: contain;
+    filter: brightness(20%);
+}
 #gameBoard {
     background-color: #3772FF;  
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 60vh;
     width: 80vw;
     margin: 0 auto;

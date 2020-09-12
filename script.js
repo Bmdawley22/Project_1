@@ -1,8 +1,18 @@
-const boardSize = [4,5];
-const currentPlayer = 1;
+const boardSize = [6,7];
+let currentPlayer = 2;
 
+const arrowIcons = document.querySelector('#arrowIcons');
 const gameBoard = document.querySelector('#gameBoard');
 const userTurn = document.querySelectorAll('#userTurn p');
+
+for (i = 0; i < boardSize[1]; i++){
+    const arrow = document.createElement('img');
+    arrow.classList.add(`arrow`);
+    arrow.setAttribute('src','Arrow.gif');
+    arrowIcons.appendChild(arrow);
+    arrow.style.gridRow = "1";
+    arrow.style.gridColumn = `${i+1}`;
+}
 
 for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
     const slot = document.createElement('img');
@@ -32,8 +42,9 @@ function changeTurn () {
         userTurn[1].style.color = 'white';
         userTurn[1].style.border = 'grey solid 5px';
         userTurn[1].style.borderRadius = '10px';
+        currentPlayer = 2;
     }
-    else {
+    else if (currentPlayer === 2){
         userTurn[1].style.color = '#12130f';
         userTurn[1].style.border = '#12130f';
 
@@ -41,6 +52,7 @@ function changeTurn () {
         userTurn[0].style.backgroundColor = 'rgb(169, 7, 7)';
         userTurn[0].style.border = 'grey solid 5px';
         userTurn[0].style.borderRadius = '10px';
+        currentPlayer = 1;
     }
 }
 
@@ -52,5 +64,5 @@ for (i = 0; i < boardSize[0];i++) {
     numRows += '1fr ';  
 }
 numRows = numRows.slice(0,-1);
-//gameBoard.style.gridTemplateRows = numRows + ';';
-console.log(gameBoard);
+numRows = numRows + ';';
+console.log(numRows);
