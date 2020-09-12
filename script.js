@@ -28,10 +28,14 @@ for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
 }
 
 
-function changeImage (event) {
+function changeArrowImage (event) {
     if (currentPlayer === 1) {
         event.setAttribute('src','RedPiece.png');
         event.style.filter = 'brightness(100%)';
+        setTimeout(()=>{
+            event.setAttribute('src','Arrow.gif');
+            event.style.filter = 'brightness(20%)';
+        },1000)
     }
     else {
         event.setAttribute('src','BlackPiece.png');
@@ -68,7 +72,7 @@ changeTurn();
 
 function dropPiece () {
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
-    changeImage(event.target);
+    changeArrowImage(event.target);
     changeTurn();
 }
 
