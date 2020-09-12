@@ -24,13 +24,13 @@ body {
     height: 60vh;
     width: 80vw;
     margin: 0 auto;
-    padding: 10px;
+    padding: 1%;
 }
 #gameBoard img {
-    margin: 5px;
-}
-img {
-    height: 100px;
-    width: 100px;
+    height: 75%;
+    width: 75%;
+    display: block;
     margin: auto;
+    object-fit: contain;
 }
+
