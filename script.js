@@ -1,5 +1,6 @@
 const boardSize = [6,7];
 let currentPlayer = 2;
+let gamePiece = '';
 
 const arrowIcons = document.querySelector('#arrowIcons');
 const gameBoard = document.querySelector('#gameBoard');
@@ -26,7 +27,7 @@ for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
     slot.style.gridRow = `${currentRow}`;
     slot.style.gridColumn = `${currentCol}`;
 }
-
+const allSlots = document.querySelectorAll('.slot');
 
 function changeArrowImage (event) {
     if (currentPlayer === 1) {
@@ -36,17 +37,41 @@ function changeArrowImage (event) {
             event.setAttribute('src','Arrow.gif');
             event.style.filter = 'brightness(20%)';
         },1000)
-    }
-    else {
+    } else {
         event.setAttribute('src','BlackPiece.png');
         event.style.filter = 'brightness(100%)';
+        setTimeout(()=>{
+            event.setAttribute('src','Arrow.gif');
+            event.style.filter = 'brightness(20%)';
+        },1000)
     }
     
+}
+function moveImage (index) {
+    if (currentPlayer === 1) {
+        gamePiece = 'RedPiece.png';
+    } else {
+        gamePiece = 'BlackPiece.png';
+    }
+    //for (i = 0; i < boardSize[1]; i++){
+        console.log(index);
+        change2BlankPiece(index)
+        index += boardSize[1];
+    
+        
+            
+}
+async function change2BlankPiece (index) {
+    const wait = await setTimeout(change2GamePiece(index,gamePiece),2000)
+    allSlots[index].setAttribute('src', 'BlankPiece.png');
+}
+function change2GamePiece(index,gamePiece) {
+    console.log(allSlots[index])
+    allSlots[index].setAttribute('src', gamePiece);
 }
 
 function changeTurn () {
     if (currentPlayer === 1) {
-        console.log(userTurn[0]);
         userTurn[0].style.color = '#12130f';
         userTurn[0].style.backgroundColor = '#12130f';
         userTurn[0].style.border = '#12130f';
@@ -73,7 +98,9 @@ changeTurn();
 function dropPiece () {
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
     changeArrowImage(event.target);
-    changeTurn();
+    moveImage(index);
+    setTimeout(changeTurn,2000);
+
 }
 
 
