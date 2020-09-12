@@ -41,6 +41,8 @@ body {
     width: 80vw;
     margin: 0 auto;
     padding: 1%;
+    border: solid #12130f 10px;
+    border-radius: 20px;;
 }
 #gameBoard img {
     height: 75%;

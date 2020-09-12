@@ -9,6 +9,7 @@ for (i = 0; i < boardSize[1]; i++){
     const arrow = document.createElement('img');
     arrow.classList.add(`arrow`);
     arrow.setAttribute('src','Arrow.gif');
+    arrow.addEventListener('click', dropPiece);
     arrowIcons.appendChild(arrow);
     arrow.style.gridRow = "1";
     arrow.style.gridColumn = `${i+1}`;
@@ -26,11 +27,18 @@ for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
     slot.style.gridColumn = `${currentCol}`;
 }
 
-const fakeEvent = document.querySelectorAll('#gameBoard img');
+
 function changeImage (event) {
-    event[5].setAttribute('src','BlackPiece.png')
+    if (currentPlayer === 1) {
+        event.setAttribute('src','RedPiece.png');
+        event.style.filter = 'brightness(100%)';
+    }
+    else {
+        event.setAttribute('src','BlackPiece.png');
+        event.style.filter = 'brightness(100%)';
+    }
+    
 }
-changeImage(fakeEvent)
 
 function changeTurn () {
     if (currentPlayer === 1) {
@@ -58,6 +66,15 @@ function changeTurn () {
 
 changeTurn();
 
+function dropPiece () {
+    const index = Array.from(event.target.parentElement.children).indexOf(event.target);
+    changeImage(event.target);
+    changeTurn();
+}
+
+
+
+/*
 let numRows = "";
 
 for (i = 0; i < boardSize[0];i++) {
@@ -66,3 +83,4 @@ for (i = 0; i < boardSize[0];i++) {
 numRows = numRows.slice(0,-1);
 numRows = numRows + ';';
 console.log(numRows);
+*/
