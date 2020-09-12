@@ -1,6 +1,8 @@
 h1 {
     text-align: center;
     color: white;
+    font-size: 50px;
+    background: grey;
 }
 body {
     background: #12130f;
@@ -11,8 +13,24 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
+#userTurn p {
+    font-size: 40px;
+}
 #gameBoard {
-    background: #07004D;  
+    background-color: #3772FF;  
     display: grid;
-    grid-template-rows: ;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 60vh;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 10px;
+}
+#gameBoard img {
+    margin: 5px;
+}
+img {
+    height: 100px;
+    width: 100px;
+    margin: auto;
 }
