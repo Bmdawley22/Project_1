@@ -39,8 +39,9 @@ function changeArrowImage (event, gamePiece, holdTime) {
         event.style.filter = 'brightness(20%)';
     },holdTime)   
 }
-
+//function to change turn (user turn icon, currentPlayer variable, current game piece)
 function changeTurn () {
+    //Gives time delay to change the user turn
     setTimeout(() => {
         if (currentPlayer === 1) {
             userTurn[0].style.color = '#12130f';
@@ -64,8 +65,7 @@ function changeTurn () {
             currentPlayer = 1;
             gamePiece = 'RedPiece.png';
         }
-    }, 400);
-        
+    }, 400);     
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
@@ -77,10 +77,11 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
         let nextNodeVal = allSlots[index+boardSize[1]].attributes[1].nodeValue;
         //If slot below is not filled with a game piece
         if (nextNodeVal !== 'RedPiece.png' && nextNodeVal !== 'BlackPiece.png'){
+            //Sets current slot to current gamePiece
             setTimeout(() => {
                 allSlots[index].setAttribute('src', gamePiece);
             }, holdTime + dropTime);
-    
+            //Resets image to blank
             setTimeout(() => {
                 allSlots[index].setAttribute('src', 'BlankPiece.png');
             }, holdTime + i * rate + rate); 
