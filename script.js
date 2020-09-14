@@ -69,15 +69,39 @@ function changeTurn () {
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
-    console.log(allSlots[index].attributes[1].nodeValue);
-
-    setTimeout(() => {
-        allSlots[index].setAttribute('src', gamePiece);
-    }, holdTime + dropTime);
-    if (allSlots[index+1].attributes[1].nodeValue === 'BlankPiece.png' && index < ((boardSize[0]-1) * boardSize[1])){
-        setTimeout(() => {
-            allSlots[index].setAttribute('src', 'BlankPiece.png');
-        }, holdTime + i * rate + rate); 
+    //Sets variable equal to node for the current 
+    let CurrentNodeVal = allSlots[index].attributes[1].nodeValue;
+    //If not on last row of game board 
+    if (allSlots[index+boardSize[1]] !== undefined) {
+        //Sets variable equal to node for the slot below current
+        let nextNodeVal = allSlots[index+boardSize[1]].attributes[1].nodeValue;
+        //If slot below is not filled with a game piece
+        if (nextNodeVal !== 'RedPiece.png' && nextNodeVal !== 'BlackPiece.png'){
+            setTimeout(() => {
+                allSlots[index].setAttribute('src', gamePiece);
+            }, holdTime + dropTime);
+    
+            setTimeout(() => {
+                allSlots[index].setAttribute('src', 'BlankPiece.png');
+            }, holdTime + i * rate + rate); 
+        }
+        //If current slot is not filled slot change image to current game piece
+        if (CurrentNodeVal === 'BlankPiece.png'){
+            //changes slot to current gamepiece
+            setTimeout(() => {
+                allSlots[index].setAttribute('src', gamePiece);
+            }, holdTime + dropTime);
+        }
+    }
+    //If on the last row of game board
+    else {
+        //if bottom row of current column isn't a gamepiece
+        if (CurrentNodeVal === 'BlankPiece.png'){
+            //changes slot to current gamepiece
+            setTimeout(() => {
+                allSlots[index].setAttribute('src', gamePiece);
+            }, holdTime + dropTime);
+        }
     }
         
 }
