@@ -69,15 +69,17 @@ function changeTurn () {
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
-    let lagTime = 20;
-    console.log(holdTime + dropTime, holdTime + i * rate + rate);
+    console.log(allSlots[index].attributes[1].nodeValue);
+
     setTimeout(() => {
         allSlots[index].setAttribute('src', gamePiece);
     }, holdTime + dropTime);
-
-    setTimeout(() => {
-        allSlots[index].setAttribute('src', 'BlankPiece.png');
-    }, holdTime + i * rate + rate); 
+    if (allSlots[index+1].attributes[1].nodeValue === 'BlankPiece.png' && index < ((boardSize[0]-1) * boardSize[1])){
+        setTimeout(() => {
+            allSlots[index].setAttribute('src', 'BlankPiece.png');
+        }, holdTime + i * rate + rate); 
+    }
+        
 }
 
 //Starts game with player 1's turn
@@ -103,7 +105,6 @@ function dropPiece () {
         change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
         dropTime += rate;
     }
-    console.log(currentPlayer);
     changeTurn();   
 }
 
