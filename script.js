@@ -32,7 +32,7 @@ for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
 let allSlots = document.querySelectorAll('.slot');
 //Changes arrow image to current player gamepiece where user clicks
 function changeArrowImage (event, gamePiece, holdTime) {
-    event.setAttribute('src','RedPiece.png');
+    event.setAttribute('src',gamePiece);
     event.style.filter = 'brightness(100%)';
     setTimeout(()=>{
         event.setAttribute('src','Arrow.gif');
@@ -41,28 +41,31 @@ function changeArrowImage (event, gamePiece, holdTime) {
 }
 
 function changeTurn () {
-    if (currentPlayer === 1) {
-        userTurn[0].style.color = '#12130f';
-        userTurn[0].style.backgroundColor = '#12130f';
-        userTurn[0].style.border = '#12130f';
+    setTimeout(() => {
+        if (currentPlayer === 1) {
+            userTurn[0].style.color = '#12130f';
+            userTurn[0].style.backgroundColor = '#12130f';
+            userTurn[0].style.border = '#12130f';
 
-        userTurn[1].style.color = 'white';
-        userTurn[1].style.border = 'grey solid 5px';
-        userTurn[1].style.borderRadius = '10px';
-        currentPlayer = 2;
-        gamePiece = 'BlackPiece.png';
-    }
-    else if (currentPlayer === 2){
-        userTurn[1].style.color = '#12130f';
-        userTurn[1].style.border = '#12130f';
+            userTurn[1].style.color = 'white';
+            userTurn[1].style.border = 'grey solid 5px';
+            userTurn[1].style.borderRadius = '10px';
+            currentPlayer = 2;
+            gamePiece = 'BlackPiece.png';
+        }
+        else if (currentPlayer === 2){
+            userTurn[1].style.color = '#12130f';
+            userTurn[1].style.border = '#12130f';
 
-        userTurn[0].style.color = 'white';
-        userTurn[0].style.backgroundColor = 'rgb(169, 7, 7)';
-        userTurn[0].style.border = 'grey solid 5px';
-        userTurn[0].style.borderRadius = '10px';
-        currentPlayer = 1;
-        gamePiece = 'RedPiece.png';
-    }
+            userTurn[0].style.color = 'white';
+            userTurn[0].style.backgroundColor = 'rgb(169, 7, 7)';
+            userTurn[0].style.border = 'grey solid 5px';
+            userTurn[0].style.borderRadius = '10px';
+            currentPlayer = 1;
+            gamePiece = 'RedPiece.png';
+        }
+    }, 400);
+        
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
@@ -71,6 +74,7 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
     setTimeout(() => {
         allSlots[index].setAttribute('src', gamePiece);
     }, holdTime + dropTime);
+
     setTimeout(() => {
         allSlots[index].setAttribute('src', 'BlankPiece.png');
     }, holdTime + i * rate + rate); 
