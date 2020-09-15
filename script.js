@@ -134,11 +134,11 @@ function dropPiece () {
         let totalTime = holdTime + dropTime;
         changeTurn(totalTime);  
     } else {
-        message.innerText = 'Column is full, cannot place piece there';
+        message.innerText = 'Column is full! Cannot place piece there!';
         message.style.color = 'rgb(169, 7, 7)';
         message.style.border = 'rgb(169, 7, 7) solid 8px';
         setTimeout(() => {
-            message.innerText = 'Click arrows to drop game piece';
+            message.innerText = 'Click arrows to drop game piece!';
             message.style.color = 'black';
             message.style.border = 'grey solid 8px';
         }, 2000);

@@ -15,7 +15,6 @@ body {
 }
 #userTurn p {
     margin: 20px auto;
-    
     padding: 10px;
     text-align: center;
     vertical-align: middle;
@@ -53,7 +52,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 50vh;
-    width: 70vw;
+    width: 75vw;
     margin: 0 auto;
     padding: 1%;
     border: solid #12130f 10px;
