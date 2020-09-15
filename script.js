@@ -40,32 +40,29 @@ function changeArrowImage (event, gamePiece, holdTime) {
     },holdTime)   
 }
 //function to change turn (user turn icon, currentPlayer variable, current game piece)
-function changeTurn () {
+function changeTurn (totalTime) {
     //Gives time delay to change the user turn
     setTimeout(() => {
+        console.log(userTurn[0])
         if (currentPlayer === 1) {
-            userTurn[0].style.color = '#12130f';
+            userTurn[0].style.color = 'white';
+            userTurn[0].style.border = 'grey solid 5px';
+            userTurn[0].style.borderRadius = '10px';
             userTurn[0].style.backgroundColor = '#12130f';
-            userTurn[0].style.border = '#12130f';
-
-            userTurn[1].style.color = 'white';
-            userTurn[1].style.border = 'grey solid 5px';
-            userTurn[1].style.borderRadius = '10px';
+            userTurn[0].innerText = 'Player 2 Turn';
             currentPlayer = 2;
             gamePiece = 'BlackPiece.png';
         }
         else if (currentPlayer === 2){
-            userTurn[1].style.color = '#12130f';
-            userTurn[1].style.border = '#12130f';
-
             userTurn[0].style.color = 'white';
             userTurn[0].style.backgroundColor = 'rgb(169, 7, 7)';
             userTurn[0].style.border = 'grey solid 5px';
             userTurn[0].style.borderRadius = '10px';
+            userTurn[0].innerText = 'Player 1 Turn';
             currentPlayer = 1;
             gamePiece = 'RedPiece.png';
         }
-    }, 400);     
+    }, totalTime);     
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
@@ -130,7 +127,8 @@ function dropPiece () {
         change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
         dropTime += rate;
     }
-    changeTurn();   
+    let totalTime = holdTime + dropTime;
+    changeTurn(totalTime);   
 }
 
 
