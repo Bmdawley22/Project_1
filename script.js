@@ -110,7 +110,6 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
 changeTurn();
 
 function dropPiece () {
-    
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
     if (currentPlayer === 1) {
         gamePiece = 'RedPiece.png';
@@ -133,6 +132,8 @@ function dropPiece () {
         }
         let totalTime = holdTime + dropTime;
         changeTurn(totalTime);  
+        getBoardValues(totalTime + 100);
+        
     } else {
         message.innerText = 'Column is full! Cannot place piece there!';
         message.style.color = 'rgb(169, 7, 7)';
@@ -142,10 +143,26 @@ function dropPiece () {
             message.style.color = 'black';
             message.style.border = 'grey solid 8px';
         }, 2000);
-    }
-         
+    }  
+    
 }
-
+let boardValues = []
+for (i = 0; i < gameBoard.children.length;i++) {
+    boardValues.push(0);
+}
+function getBoardValues (time)  {
+    setTimeout(() => {
+        for (i = 0; i < gameBoard.children.length;i++){
+            if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
+                boardValues[i] = 1;
+            }
+            else if (allSlots[i].attributes[1].nodeValue === 'BlackPiece.png') {
+                boardValues[i] = 2;
+            } 
+        }
+        console.log(boardValues);
+    }, time);
+}
 
 
 /*
