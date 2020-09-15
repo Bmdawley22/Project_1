@@ -8,18 +8,35 @@ body {
     background: #12130f;
     color: white;
 }
+#userTurn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 #userTurn p {
-    font-size: 40px;
+    margin: 20px auto;
+    
     padding: 10px;
-    margin: 10px auto;
-    width: 20vw;
     text-align: center;
+    vertical-align: middle;
+}
+#message {
+    color: black;
+    background: white;
+    font-size: 3vh;
+    width: 30vw;
+    border: grey solid 5px;
+    border-radius: 10px;
+}
+#player {
+    font-size: 4vh; 
+    width: 20vw;  
 }
 #arrowIcons {
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    width: 80vw;
+    width: 75vw;
     margin: 2vh auto;
 }
 .arrow {
@@ -35,8 +52,8 @@ body {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 60vh;
-    width: 80vw;
+    height: 50vh;
+    width: 70vw;
     margin: 0 auto;
     padding: 1%;
     border: solid #12130f 10px;

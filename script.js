@@ -6,6 +6,7 @@ let gamePiece = '';
 const arrowIcons = document.querySelector('#arrowIcons');
 const gameBoard = document.querySelector('#gameBoard');
 const userTurn = document.querySelectorAll('#userTurn p');
+const message = document.querySelector('#message');
 //Adds arrow icons above game board for each column
 for (i = 0; i < boardSize[1]; i++){
     const arrow = document.createElement('img');
@@ -41,28 +42,29 @@ function changeArrowImage (event, gamePiece, holdTime) {
 }
 //function to change turn (user turn icon, currentPlayer variable, current game piece)
 function changeTurn (totalTime) {
-    //Gives time delay to change the user turn
-    setTimeout(() => {
-        console.log(userTurn[0])
-        if (currentPlayer === 1) {
-            userTurn[0].style.color = 'white';
-            userTurn[0].style.border = 'grey solid 5px';
-            userTurn[0].style.borderRadius = '10px';
-            userTurn[0].style.backgroundColor = '#12130f';
-            userTurn[0].innerText = 'Player 2 Turn';
-            currentPlayer = 2;
-            gamePiece = 'BlackPiece.png';
-        }
-        else if (currentPlayer === 2){
-            userTurn[0].style.color = 'white';
-            userTurn[0].style.backgroundColor = 'rgb(169, 7, 7)';
-            userTurn[0].style.border = 'grey solid 5px';
-            userTurn[0].style.borderRadius = '10px';
-            userTurn[0].innerText = 'Player 1 Turn';
-            currentPlayer = 1;
-            gamePiece = 'RedPiece.png';
-        }
-    }, totalTime);     
+        
+        //Gives time delay to change the user turn
+        setTimeout(() => {
+            
+            if (currentPlayer === 1) {
+                userTurn[1].style.color = 'white';
+                userTurn[1].style.border = 'grey solid 8px';
+                userTurn[1].style.borderRadius = '10px';
+                userTurn[1].style.backgroundColor = '#12130f';
+                userTurn[1].innerText = 'Player 2 Turn';
+                currentPlayer = 2;
+                gamePiece = 'BlackPiece.png';
+            }
+            else if (currentPlayer === 2){
+                userTurn[1].style.color = 'white';
+                userTurn[1].style.backgroundColor = 'rgb(169, 7, 7)';
+                userTurn[1].style.border = 'grey solid 8px';
+                userTurn[1].style.borderRadius = '10px';
+                userTurn[1].innerText = 'Player 1 Turn';
+                currentPlayer = 1;
+                gamePiece = 'RedPiece.png';
+            }
+        }, totalTime);     
 }
 //Changes images as gamepiece is dropped
 function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
@@ -108,6 +110,7 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
 changeTurn();
 
 function dropPiece () {
+    
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
     if (currentPlayer === 1) {
         gamePiece = 'RedPiece.png';
@@ -119,16 +122,28 @@ function dropPiece () {
     for (i = 1; i < boardSize[1]; i++){  
         indexArr.push(indexArr[i-1] + boardSize[1]); 
     }
-    let holdTime = 1000;
-    changeArrowImage(event.target,gamePiece, holdTime);
-    let rate = 100;
-    let dropTime = 0;
-    for (i = 0; i < (indexArr.length - 1); i++){
-        change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
-        dropTime += rate;
+    if (allSlots[indexArr[0]].attributes[1].nodeValue === 'BlankPiece.png'){
+        let holdTime = 600;
+        changeArrowImage(event.target,gamePiece, holdTime);
+        let rate = 60;
+        let dropTime = 0;
+        for (i = 0; i < (indexArr.length - 1); i++){
+            change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
+            dropTime += rate;
+        }
+        let totalTime = holdTime + dropTime;
+        changeTurn(totalTime);  
+    } else {
+        message.innerText = 'Column is full, cannot place piece there';
+        message.style.color = 'rgb(169, 7, 7)';
+        message.style.border = 'rgb(169, 7, 7) solid 8px';
+        setTimeout(() => {
+            message.innerText = 'Click arrows to drop game piece';
+            message.style.color = 'black';
+            message.style.border = 'grey solid 8px';
+        }, 2000);
     }
-    let totalTime = holdTime + dropTime;
-    changeTurn(totalTime);   
+         
 }
 
 
