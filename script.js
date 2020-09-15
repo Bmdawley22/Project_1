@@ -48,7 +48,7 @@ function changeTurn (totalTime) {
             
             if (currentPlayer === 1) {
                 userTurn[1].style.color = 'white';
-                userTurn[1].style.border = 'grey solid 8px';
+                userTurn[1].style.border = 'grey solid 10px';
                 userTurn[1].style.borderRadius = '10px';
                 userTurn[1].style.backgroundColor = '#12130f';
                 userTurn[1].innerText = 'Player 2 Turn';
@@ -58,7 +58,7 @@ function changeTurn (totalTime) {
             else if (currentPlayer === 2){
                 userTurn[1].style.color = 'white';
                 userTurn[1].style.backgroundColor = 'rgb(169, 7, 7)';
-                userTurn[1].style.border = 'grey solid 8px';
+                userTurn[1].style.border = 'grey solid 10px';
                 userTurn[1].style.borderRadius = '10px';
                 userTurn[1].innerText = 'Player 1 Turn';
                 currentPlayer = 1;
@@ -108,83 +108,89 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
 
 //Starts game with player 1's turn
 changeTurn();
-
+//event listner function when arrow is clicked
 function dropPiece () {
+    //gets slot index where piece is dropped
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
+    //sets gamePiece variable equal to the current player's game piece
     if (currentPlayer === 1) {
         gamePiece = 'RedPiece.png';
     } else {
         gamePiece = 'BlackPiece.png';
     }
+    //creates array of the indexes for the column where the piece is dropped
     let indexArr = [];
     indexArr.push(index);
     for (i = 1; i < boardSize[1]; i++){  
         indexArr.push(indexArr[i-1] + boardSize[1]); 
     }
     let totalTime = 0;
+    //if statement to check if the user clicked on a filled column
     if (allSlots[indexArr[0]].attributes[1].nodeValue === 'BlankPiece.png'){
+        //hold time is the the time the game piece image is shown above the column clicked
         let holdTime = 600;
         changeArrowImage(event.target,gamePiece, holdTime);
-        let rate = 60;
-        let dropTime = 0;
+        let rate = 60;  //time each image is shown in each slot of the dropped column
+        let dropTime = 0;  //time set in setTimeout for changing image
+        //shows game piece dropping down column selected
         for (i = 0; i < (indexArr.length - 1); i++){
             change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
             dropTime += rate;
         }
-        totalTime = holdTime + dropTime; 
+        totalTime = holdTime + dropTime; //total time the drop took
     } else {
+        //message for when user clicks a filled row
         message.innerText = 'Column is full! Cannot place piece there!';
         message.style.color = 'rgb(169, 7, 7)';
         message.style.border = 'rgb(169, 7, 7) solid 8px';
+        //changes image back to arrows where user clicked
         setTimeout(() => {
             message.innerText = 'Click arrows to drop game piece!';
             message.style.color = 'black';
             message.style.border = 'grey solid 8px';
         }, 2000);
     }  
-    console.log(totalTime)
-    changeTurn(totalTime); 
+    changeTurn(totalTime);
     check4HorizWinner(totalTime + 200);
 }
 let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
     boardVals.push(0);
 }
-function getBoardValues (time)  {
-    setTimeout(() => {
-        for (i = 0; i < gameBoard.children.length;i++){
-            if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
-                boardVals[i] = 1;
-            }
-            else if (allSlots[i].attributes[1].nodeValue === 'BlackPiece.png') {
-                boardVals[i] = 2;
-            } 
+function getBoardValues ()  {
+    for (i = 0; i < gameBoard.children.length;i++){
+        console.log(allSlots[i].attributes[1].nodeValue)
+        if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
+            boardVals[i] = 1;
         }
-    }, time);
+        else if (allSlots[i].attributes[1].nodeValue === 'BlackPiece.png') {
+            boardVals[i] = 2;
+        } 
+    }
+    
 }
 function check4HorizWinner (time) {
-    getBoardValues(time);
-    console.log(boardVals);
     setTimeout(() => {
-        for (i = 0; i < boardSize[0]- 4; i++){
-            for (j = 0; j < boardSize[1]; j++){
+        getBoardValues(); 
+        console.log(boardVals);
+        for (i = 0; i < boardSize[0]; i++){
+            for (j = 0; j < boardSize[1]-3; j++){
                 k = j + i * boardSize[1];
                 if (boardVals[k] === boardVals[k+1] && boardVals[k] != 0) {
-                    if (boardVals[k+1] === boardVals[k + 2]) {
+                    if (boardVals[k+1] === boardVals[k+2]) {
                         if (boardVals[k+2] === boardVals[k+3]) {
-                            if (boardVals[k+3] === boardVals[k+4]){
-                                const winner = userTurn[1].innerText.slice(0,-5);
-                                console.log(winner)
-                                message.innerText = `${winner} Wins!`;
-                                if (winner === 'Player 1') {
-                                    message.style.color = 'rgb(169, 7, 7)';
-                                    message.style.border = 'rgb(169, 7, 7) solid 10px';
-                                }          
-                                else {
-                                    message.style.border = 'black solid 8px';
-                                }    
-                                return;     
-                            }
+                            const winner = userTurn[1].innerText.slice(0,-5);
+                            console.log(winner)
+                            if (winner === 'Player 2') {
+                                message.innerText = `Player 1 Wins!`;
+                                message.style.color = 'rgb(169, 7, 7)';
+                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                            }          
+                            else {
+                                message.innerText = `Player 2 Wins!`;
+                                message.style.border = 'black solid 8px';
+                            }    
+                            return;        
                         }
                     }
                 }

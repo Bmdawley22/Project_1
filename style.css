@@ -18,13 +18,14 @@ body {
     padding: 10px;
     text-align: center;
     vertical-align: middle;
+    font: bold;
 }
 #message {
     color: black;
     background: white;
     font-size: 3vh;
     width: 30vw;
-    border: grey solid 5px;
+    border: grey solid 10px;
     border-radius: 10px;
 }
 #player {
