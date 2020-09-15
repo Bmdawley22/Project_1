@@ -65,4 +65,7 @@ body {
     margin: auto;
     object-fit: contain;
 }
+.slot {
+    transition-duration: 100ms;
+}
 

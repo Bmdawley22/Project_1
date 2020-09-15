@@ -121,6 +121,7 @@ function dropPiece () {
     for (i = 1; i < boardSize[1]; i++){  
         indexArr.push(indexArr[i-1] + boardSize[1]); 
     }
+    let totalTime = 0;
     if (allSlots[indexArr[0]].attributes[1].nodeValue === 'BlankPiece.png'){
         let holdTime = 600;
         changeArrowImage(event.target,gamePiece, holdTime);
@@ -130,10 +131,7 @@ function dropPiece () {
             change2GamePiece(indexArr[i], i, gamePiece, holdTime, dropTime ,rate);
             dropTime += rate;
         }
-        let totalTime = holdTime + dropTime;
-        changeTurn(totalTime);  
-        getBoardValues(totalTime + 100);
-        
+        totalTime = holdTime + dropTime; 
     } else {
         message.innerText = 'Column is full! Cannot place piece there!';
         message.style.color = 'rgb(169, 7, 7)';
@@ -144,26 +142,56 @@ function dropPiece () {
             message.style.border = 'grey solid 8px';
         }, 2000);
     }  
-    
+    console.log(totalTime)
+    changeTurn(totalTime); 
+    check4HorizWinner(totalTime + 200);
 }
-let boardValues = []
+let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
-    boardValues.push(0);
+    boardVals.push(0);
 }
 function getBoardValues (time)  {
     setTimeout(() => {
         for (i = 0; i < gameBoard.children.length;i++){
             if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
-                boardValues[i] = 1;
+                boardVals[i] = 1;
             }
             else if (allSlots[i].attributes[1].nodeValue === 'BlackPiece.png') {
-                boardValues[i] = 2;
+                boardVals[i] = 2;
             } 
         }
-        console.log(boardValues);
     }, time);
 }
-
+function check4HorizWinner (time) {
+    getBoardValues(time);
+    console.log(boardVals);
+    setTimeout(() => {
+        for (i = 0; i < boardSize[0]- 4; i++){
+            for (j = 0; j < boardSize[1]; j++){
+                k = j + i * boardSize[1];
+                if (boardVals[k] === boardVals[k+1] && boardVals[k] != 0) {
+                    if (boardVals[k+1] === boardVals[k + 2]) {
+                        if (boardVals[k+2] === boardVals[k+3]) {
+                            if (boardVals[k+3] === boardVals[k+4]){
+                                const winner = userTurn[1].innerText.slice(0,-5);
+                                console.log(winner)
+                                message.innerText = `${winner} Wins!`;
+                                if (winner === 'Player 1') {
+                                    message.style.color = 'rgb(169, 7, 7)';
+                                    message.style.border = 'rgb(169, 7, 7) solid 10px';
+                                }          
+                                else {
+                                    message.style.border = 'black solid 8px';
+                                }    
+                                return;     
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }, time);
+}
 
 /*
 let numRows = "";
