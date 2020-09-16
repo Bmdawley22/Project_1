@@ -56,6 +56,9 @@ Selecting winner:
 
 - First I ran a function to get baord value for each slot (1 = red game piece, 2 = black game piece).  Then I created separate functions for checking for four in a row horizontally, vertically, diagonally down, and diagonally up.
 
+Project Challenges:
+- Timing all of the functions out correctly with the game piece dropping
+
 Unsolved Issues: 
 
 - If a user clicks before the previous piece has finished dropping, the game piece does not change and the game does not function correctly
