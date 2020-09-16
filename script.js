@@ -271,6 +271,7 @@ function checkSlantLeftWinner (time) {
 function flashRedWinner () {
     if (onOff === 1) {
         message.innerText = `Player 1 Wins!`;
+        message.style.backgroundColor = 'white';
         message.style.color = 'rgb(169, 7, 7)';
         message.style.fontSize = '4vh';
         message.style.border = 'rgb(169, 7, 7) solid 10px';
@@ -278,14 +279,15 @@ function flashRedWinner () {
     }
     else {
         message.innerText = `Reset Game!`;
-        message.style.color = 'white';
-        message.style.border = 'white solid 10px';
+        message.style.color = '0748e1';
+        message.style.border = '0748e1 solid 10px';
         onOff = 1;
     }    
 }
 function flashBlackWinner () {
     if (onOff === 1) {
         message.innerText = `Player 2 Wins!`;
+        message.style.backgroundColor = 'white';
         message.style.color = 'black';
         message.style.fontSize = '4vh';
         message.style.border = 'black solid 10px';
@@ -293,9 +295,8 @@ function flashBlackWinner () {
     }
     else {
         message.innerText = `Reset Game!`;
-        message.style.color = 'white';
-        message.style.border = 'white solid 10px';
-        message.style.border = 'white solid 10px';
+        message.style.color = 'black';
+        message.style.border = 'black solid 10px';
         onOff = 1;
     }    
 }

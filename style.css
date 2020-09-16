@@ -2,7 +2,7 @@ h1 {
     text-align: center;
     color: white;
     font-size: 7vh;
-    background: #3772FF;
+    background: #0748e1;
 }
 body {
     background: #12130f;
@@ -19,7 +19,7 @@ body {
 #reset {
     font-size: 4vh;
     color: white;
-    background: #3772FF;
+    background: #0748e1;
     border: white solid 10px;
     border-radius: 10px;
     width: 15vw;
@@ -30,7 +30,7 @@ body {
 }
 #message {
     color: white;
-    background: #3772FF;
+    background: #0748e1;
     font-size: 3vh;
     padding: 10px;
     width: 30vw;
@@ -53,7 +53,7 @@ body {
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    width: 75vw;
+    width: 65vw;
     margin: 2vh auto;
 }
 .arrow {
@@ -65,12 +65,12 @@ body {
     filter: brightness(20%);
 }
 #gameBoard {
-    background-color: #3772FF;  
+    background-color: #0748e1;  
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 50vh;
-    width: 75vw;
+    width: 65vw;
     margin: 0 auto;
     padding: 1%;
     border: solid #12130f 10px;

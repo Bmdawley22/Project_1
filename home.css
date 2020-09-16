@@ -2,14 +2,14 @@ h1 {
     text-align: center;
     color: white;
     font-size: 7vh;
-    background: #3772FF;
+    background: #0748e1;
 }
 body {
     background: #12130f;
     color: white;
 }
 body div {
-    border: #175af5 solid 10px;
+    border: #0748e1 solid 10px;
     margin: 0 10vw;
 }
 h2 {
@@ -22,11 +22,11 @@ img {
     width: 60vw;
     object-fit: contain;
     display: block;
-    margin: 5vh auto;
+    margin: 6vh auto;
 }
 a {
     color: white;
-    background: #0e3eaf;
+    background: #0748e1;
     padding: 15px;
     border-radius: 10px;
     text-decoration: none;
