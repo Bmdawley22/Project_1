@@ -171,6 +171,7 @@ function getBoardValues ()  {
     }
     
 }
+let onOff = 1;
 function check4HorizWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
@@ -182,14 +183,10 @@ function check4HorizWinner (time) {
                         if (boardVals[k+2] === boardVals[k+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                message.innerText = `Player 1 Wins!`;
-                                message.style.color = 'rgb(169, 7, 7)';
-                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                                setInterval(flashRedWinner, 750);
                             }          
                             else {
-                                message.innerText = `Player 2 Wins!`;
-                                message.style.border = 'black solid 8px';
-                                message.style.color = 'black';
+                                setInterval(flashBlackWinner, 750);
                             }    
                             return;        
                         }
@@ -210,14 +207,10 @@ function checkVertWinner (time) {
                         if (boardVals[k+2*boardSize[1]] === boardVals[k+3*boardSize[1]]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                message.innerText = `Player 1 Wins!`;
-                                message.style.color = 'rgb(169, 7, 7)';
-                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                                setInterval(flashRedWinner, 750);
                             }          
                             else {
-                                message.innerText = `Player 2 Wins!`;
-                                message.style.border = 'black solid 8px';
-                                message.style.color = 'black';
+                                setInterval(flashBlackWinner, 750);
                             }    
                             return;        
                         }
@@ -238,14 +231,10 @@ function checkSlantRightWinner (time) {
                         if (boardVals[k+2*boardSize[1]+2] === boardVals[k+3*boardSize[1]+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                message.innerText = `Player 1 Wins!`;
-                                message.style.color = 'rgb(169, 7, 7)';
-                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                                setInterval(flashRedWinner, 750);
                             }          
                             else {
-                                message.innerText = `Player 2 Wins!`;
-                                message.style.border = 'black solid 8px';
-                                message.style.color = 'black';
+                                setInterval(flashBlackWinner, 750);
                             }    
                             return;        
                         }
@@ -266,14 +255,10 @@ function checkSlantLeftWinner (time) {
                         if (boardVals[k+2*boardSize[1]-2] === boardVals[k+3*boardSize[1]-3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                message.innerText = `Player 1 Wins!`;
-                                message.style.color = 'rgb(169, 7, 7)';
-                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                                setInterval(flashRedWinner, 750);
                             }          
                             else {
-                                message.innerText = `Player 2 Wins!`;
-                                message.style.border = 'black solid 8px';
-                                message.style.color = 'black';
+                                setInterval(flashBlackWinner, 750);
                             }    
                             return;        
                         }
@@ -283,5 +268,30 @@ function checkSlantLeftWinner (time) {
         }
     }, time);
 }
-
+function flashRedWinner () {
+    if (onOff === 1) {
+        message.innerText = `Player 1 Wins!`;
+        message.style.color = 'rgb(169, 7, 7)';
+        message.style.border = 'rgb(169, 7, 7) solid 10px';
+        onOff = 0;
+    }
+    else {
+        message.style.color = 'white';
+        message.style.border = 'grey solid 10px';
+        onOff = 1;
+    }    
+}
+function flashBlackWinner () {
+    if (onOff === 1) {
+        message.innerText = `Player 2 Wins!`;
+        message.style.border = 'black solid 8px';
+        message.style.color = 'black';
+        onOff = 0;
+    }
+    else {
+        message.style.color = 'white';
+        message.style.border = 'grey solid 10px';
+        onOff = 1;
+    }    
+}
 
