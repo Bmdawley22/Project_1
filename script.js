@@ -308,8 +308,8 @@ function flashRedWinner () {
     //informs user to reset game
     else {
         message.innerText = `Reset Game!`;
-        message.style.color = 'black';
-        message.style.backgroundColor = 'white';
+        message.style.backgroundColor = '#0748e1';
+        message.style.color = 'white';
         message.style.border = 'white solid 10px';
         onOff = 1;
     }    
@@ -326,9 +326,9 @@ function flashBlackWinner () {
     //informs user to reset game
     else {
         message.innerText = `Reset Game!`;
-        message.style.backgroundColor = 'white';
-        message.style.color = 'black';
-        message.style.border = 'black solid 10px';
+        message.style.backgroundColor = '#0748e1';
+        message.style.color = 'white';
+        message.style.border = 'white solid 10px';
         onOff = 1;
     }    
 }
