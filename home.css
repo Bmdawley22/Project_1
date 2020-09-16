@@ -1,14 +1,8 @@
-header img {
-    height: 7vh;
-    object-fit: contain;
-    vertical-align: middle;
-    padding: 0 0 15px 0;
-}
 h1 {
-    background: #0748e1;
     text-align: center;
     color: white;
-    font-size: 7vh;  
+    font-size: 7vh;
+    background: #0748e1;
 }
 body {
     background: #12130f;
