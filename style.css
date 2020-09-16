@@ -1,5 +1,5 @@
 header img {
-    height: 7vh;
+    height: 6vh;
     object-fit: contain;
     vertical-align: middle;
     padding: 0 0 15px 0;
@@ -8,7 +8,7 @@ h1 {
     background: #0748e1;
     text-align: center;
     color: white;
-    font-size: 7vh;  
+    font-size: 6vh;  
 }
 body {
     background: #12130f;
@@ -20,10 +20,9 @@ body {
     flex-direction: row;
     align-content: center;
     margin: 10px;
-    padding: 10px;
 }
 #reset {
-    font-size: 4vh;
+    font-size: 3vh;
     color: white;
     background: #0748e1;
     border: white solid 10px;
@@ -52,19 +51,19 @@ body {
     font: bold;
 }
 #player {
-    font-size: 4vh; 
+    font-size: 3vh; 
     width: 15vw;  
 }
 #arrowIcons {
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    width: 65vw;
-    margin: 2vh auto;
+    width: 60vw;
+    margin: 1vh auto;
 }
 .arrow {
-    height: 100px;
-    width: 100px;
+    height: 6vh;
+    width: 6vw;
     display: block;
     margin: auto;
     object-fit: contain;
@@ -76,7 +75,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 50vh;
-    width: 65vw;
+    width: 60vw;
     margin: 0 auto;
     padding: 1%;
     border: solid #12130f 10px;
