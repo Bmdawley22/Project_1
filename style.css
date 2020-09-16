@@ -8,17 +8,11 @@ body {
     background: #12130f;
     color: white;
 }
+
 #userTurn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-#userTurn p {
-    margin: 20px auto;
-    padding: 10px;
-    text-align: center;
-    vertical-align: middle;
-    font: bold;
 }
 #message {
     color: black;
@@ -27,6 +21,13 @@ body {
     width: 30vw;
     border: grey solid 10px;
     border-radius: 10px;
+}
+#userTurn p {
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    font: bold;
 }
 #player {
     font-size: 4vh; 
