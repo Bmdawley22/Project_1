@@ -309,6 +309,7 @@ function flashRedWinner () {
         onOff = 1;
     }    
 }
+//function used with set interval to flash player 2 wins
 function flashBlackWinner () {
     if (onOff === 1) {
         message.innerText = `Player 2 Wins!`;
@@ -318,6 +319,7 @@ function flashBlackWinner () {
         message.style.border = 'black solid 10px';
         onOff = 0;
     }
+    //informs user to reset game
     else {
         message.innerText = `Reset Game!`;
         message.style.color = 'black';
@@ -325,11 +327,9 @@ function flashBlackWinner () {
         onOff = 1;
     }    
 }
-console.log()
 const reset = document.querySelector('#reset');
 reset.addEventListener('click',() => {
     location.reload();
-    
 })
 
 
