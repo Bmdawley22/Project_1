@@ -183,10 +183,10 @@ function check4HorizWinner (time) {
                         if (boardVals[k+2] === boardVals[k+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1400);
+                                setInterval(flashRedWinner, 800);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1400);
+                                setInterval(flashBlackWinner, 800);
                             }    
                             return;        
                         }
@@ -207,10 +207,10 @@ function checkVertWinner (time) {
                         if (boardVals[k+2*boardSize[1]] === boardVals[k+3*boardSize[1]]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1400);
+                                setInterval(flashRedWinner, 800);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1400);
+                                setInterval(flashBlackWinner, 800);
                             }    
                             return;        
                         }
@@ -231,10 +231,10 @@ function checkSlantRightWinner (time) {
                         if (boardVals[k+2*boardSize[1]+2] === boardVals[k+3*boardSize[1]+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1400);
+                                setInterval(flashRedWinner, 800);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1400);
+                                setInterval(flashBlackWinner, 800);
                             }    
                             return;        
                         }
@@ -255,10 +255,10 @@ function checkSlantLeftWinner (time) {
                         if (boardVals[k+2*boardSize[1]-2] === boardVals[k+3*boardSize[1]-3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1400);
+                                setInterval(flashRedWinner, 800);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1400);
+                                setInterval(flashBlackWinner, 800);
                             }    
                             return;        
                         }
