@@ -152,6 +152,7 @@ function dropPiece () {
     }  
     changeTurn(totalTime);
     check4HorizWinner(totalTime + 200);
+    checkVertWinner(totalTime + 100);
 }
 let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
@@ -159,7 +160,6 @@ for (i = 0; i < gameBoard.children.length;i++) {
 }
 function getBoardValues ()  {
     for (i = 0; i < gameBoard.children.length;i++){
-        console.log(allSlots[i].attributes[1].nodeValue)
         if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
             boardVals[i] = 1;
         }
@@ -179,7 +179,6 @@ function check4HorizWinner (time) {
                     if (boardVals[k+1] === boardVals[k+2]) {
                         if (boardVals[k+2] === boardVals[k+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
-                            console.log(winner)
                             if (winner === 'Player 2') {
                                 message.innerText = `Player 1 Wins!`;
                                 message.style.color = 'rgb(169, 7, 7)';
@@ -200,15 +199,13 @@ function check4HorizWinner (time) {
 function checkVertWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
-        console.log(boardVals);
-        for (i = 0; i < boardSize[0]; i++){
-            for (j = 0; j < boardSize[1]-3; j++){
+        for (i = 0; i < boardSize[0]-3; i++){
+            for (j = 0; j < boardSize[1]; j++){
                 k = j + i * boardSize[1];
-                if (boardVals[k] === boardVals[k+1] && boardVals[k] != 0) {
-                    if (boardVals[k+1] === boardVals[k+2]) {
-                        if (boardVals[k+2] === boardVals[k+3]) {
+                if (boardVals[k] === boardVals[k+boardSize[1]] && boardVals[k] != 0) {
+                    if (boardVals[k+boardSize[1]] === boardVals[k+2*boardSize[1]]) {
+                        if (boardVals[k+2*boardSize[1]] === boardVals[k+3*boardSize[1]]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
-                            console.log(winner)
                             if (winner === 'Player 2') {
                                 message.innerText = `Player 1 Wins!`;
                                 message.style.color = 'rgb(169, 7, 7)';
@@ -226,6 +223,7 @@ function checkVertWinner (time) {
         }
     }, time);
 }
+
 
 
 
