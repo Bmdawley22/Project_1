@@ -128,7 +128,7 @@ function dropPiece () {
     //if statement to check if the user clicked on a filled column
     if (allSlots[indexArr[0]].attributes[1].nodeValue === 'BlankPiece.png'){
         //hold time is the the time the game piece image is shown above the column clicked
-        let holdTime = 400;
+        let holdTime = 200;
         changeArrowImage(event.target,gamePiece, holdTime);
         let rate = 60;  //time each image is shown in each slot of the dropped column
         let dropTime = 0;  //time set in setTimeout for changing image
@@ -151,10 +151,10 @@ function dropPiece () {
         }, 2000);
     }  
     changeTurn(totalTime);
-    check4HorizWinner(totalTime + 100);
-    checkVertWinner(totalTime + 100);
-    checkSlantRightWinner(totalTime + 100);
-    checkSlantLeftWinner(totalTime + 100);
+    check4HorizWinner(totalTime);
+    checkVertWinner(totalTime);
+    checkSlantRightWinner(totalTime);
+    checkSlantLeftWinner(totalTime);
 }
 let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
@@ -183,10 +183,10 @@ function check4HorizWinner (time) {
                         if (boardVals[k+2] === boardVals[k+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1000);
+                                setInterval(flashRedWinner, 1400);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1000);
+                                setInterval(flashBlackWinner, 1400);
                             }    
                             return;        
                         }
@@ -207,10 +207,10 @@ function checkVertWinner (time) {
                         if (boardVals[k+2*boardSize[1]] === boardVals[k+3*boardSize[1]]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1000);
+                                setInterval(flashRedWinner, 1400);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1000);
+                                setInterval(flashBlackWinner, 1400);
                             }    
                             return;        
                         }
@@ -231,10 +231,10 @@ function checkSlantRightWinner (time) {
                         if (boardVals[k+2*boardSize[1]+2] === boardVals[k+3*boardSize[1]+3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1000);
+                                setInterval(flashRedWinner, 1400);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1000);
+                                setInterval(flashBlackWinner, 1400);
                             }    
                             return;        
                         }
@@ -255,10 +255,10 @@ function checkSlantLeftWinner (time) {
                         if (boardVals[k+2*boardSize[1]-2] === boardVals[k+3*boardSize[1]-3]) {
                             const winner = userTurn[1].innerText.slice(0,-5);
                             if (winner === 'Player 2') {
-                                setInterval(flashRedWinner, 1000);
+                                setInterval(flashRedWinner, 1400);
                             }          
                             else {
-                                setInterval(flashBlackWinner, 1000);
+                                setInterval(flashBlackWinner, 1400);
                             }    
                             return;        
                         }
@@ -272,6 +272,7 @@ function flashRedWinner () {
     if (onOff === 1) {
         message.innerText = `Player 1 Wins!`;
         message.style.color = 'rgb(169, 7, 7)';
+        message.style.fontSize = '4vh';
         message.style.border = 'rgb(169, 7, 7) solid 10px';
         onOff = 0;
     }
@@ -286,12 +287,14 @@ function flashBlackWinner () {
     if (onOff === 1) {
         message.innerText = `Player 2 Wins!`;
         message.style.color = 'black';
+        message.style.fontSize = '4vh';
         message.style.border = 'black solid 10px';
         onOff = 0;
     }
     else {
         message.innerText = `Reset Game!`;
         message.style.color = 'white';
+        message.style.border = 'white solid 10px';
         message.style.border = 'white solid 10px';
         onOff = 1;
     }    
