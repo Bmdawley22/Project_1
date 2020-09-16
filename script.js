@@ -12,6 +12,7 @@ for (i = 0; i < boardSize[1]; i++){
     const arrow = document.createElement('img');
     arrow.classList.add(`arrow`);
     arrow.setAttribute('src','Arrow.gif');
+    arrow.setAttribute('type','arrow icons')
     arrow.addEventListener('click', dropPiece);
     arrowIcons.appendChild(arrow);
     arrow.style.gridRow = "1";
@@ -22,7 +23,7 @@ for (i = 0; i < (boardSize[0] * boardSize[1]); i++) {
     const slot = document.createElement('img');
     slot.classList.add(`slot`);
     slot.setAttribute('src','BlankPiece.png');
-
+    slot.setAttribute('type','blank image');
     gameBoard.appendChild(slot);
     currentRow = Math.ceil((i+1)/boardSize[1]);
     currentCol = i + 1 - (Math.floor(i/boardSize[1]))*boardSize[1];
@@ -79,10 +80,12 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
             //Sets current slot to current gamePiece
             setTimeout(() => {
                 allSlots[index].setAttribute('src', gamePiece);
+                allSlots[index].setAttribute('type',`${gamePiece}`);
             }, holdTime + dropTime);
             //Resets image to blank
             setTimeout(() => {
                 allSlots[index].setAttribute('src', 'BlankPiece.png');
+                allSlots[index].setAttribute('type','blank image');
             }, holdTime + i * rate + rate); 
         }
         //If current slot is not filled slot change image to current game piece
@@ -90,6 +93,7 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
             //changes slot to current gamepiece
             setTimeout(() => {
                 allSlots[index].setAttribute('src', gamePiece);
+                allSlots[index].setAttribute('type',`${gamePiece}`);
             }, holdTime + dropTime);
         }
     }
@@ -100,6 +104,7 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
             //changes slot to current gamepiece
             setTimeout(() => {
                 allSlots[index].setAttribute('src', gamePiece);
+                allSlots[index].setAttribute('type',`${gamePiece}`);
             }, holdTime + dropTime);
         }
     }
