@@ -155,7 +155,7 @@ function dropPiece () {
             message.style.border = 'grey solid 8px';
         }, 2000);
     }  
-    changeTurn(totalTime);
+    changeTurn(totalTime-100);
     check4HorizWinner(totalTime);
     checkVertWinner(totalTime);
     checkSlantRightWinner(totalTime);
