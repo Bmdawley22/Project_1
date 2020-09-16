@@ -128,7 +128,7 @@ function dropPiece () {
     //if statement to check if the user clicked on a filled column
     if (allSlots[indexArr[0]].attributes[1].nodeValue === 'BlankPiece.png'){
         //hold time is the the time the game piece image is shown above the column clicked
-        let holdTime = 600;
+        let holdTime = 400;
         changeArrowImage(event.target,gamePiece, holdTime);
         let rate = 60;  //time each image is shown in each slot of the dropped column
         let dropTime = 0;  //time set in setTimeout for changing image
@@ -172,6 +172,34 @@ function getBoardValues ()  {
 function check4HorizWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
+        for (i = 0; i < boardSize[0]; i++){
+            for (j = 0; j < boardSize[1]-3; j++){
+                k = j + i * boardSize[1];
+                if (boardVals[k] === boardVals[k+1] && boardVals[k] != 0) {
+                    if (boardVals[k+1] === boardVals[k+2]) {
+                        if (boardVals[k+2] === boardVals[k+3]) {
+                            const winner = userTurn[1].innerText.slice(0,-5);
+                            console.log(winner)
+                            if (winner === 'Player 2') {
+                                message.innerText = `Player 1 Wins!`;
+                                message.style.color = 'rgb(169, 7, 7)';
+                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                            }          
+                            else {
+                                message.innerText = `Player 2 Wins!`;
+                                message.style.border = 'black solid 8px';
+                            }    
+                            return;        
+                        }
+                    }
+                }
+            }
+        }
+    }, time);
+}
+function checkVertWinner (time) {
+    setTimeout(() => {
+        getBoardValues(); 
         console.log(boardVals);
         for (i = 0; i < boardSize[0]; i++){
             for (j = 0; j < boardSize[1]-3; j++){
@@ -199,14 +227,5 @@ function check4HorizWinner (time) {
     }, time);
 }
 
-/*
-let numRows = "";
 
-for (i = 0; i < boardSize[0];i++) {
-    numRows += '1fr ';  
-}
-numRows = numRows.slice(0,-1);
-numRows = numRows + ';';
-console.log(numRows);
-*/
 
