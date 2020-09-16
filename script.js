@@ -244,6 +244,7 @@ function checkSlantRightWinner (time) {
             //for loop going through each column of board, stops 3 from end
             for (j = 0; j < boardSize[1]-3; j++){
                 k = j + i * boardSize[1];
+                //if statements to check for four in a row diagonally right
                 if (boardVals[k] === boardVals[k+boardSize[1]+1] && boardVals[k] != 0) {
                     if (boardVals[k+boardSize[1]+1] === boardVals[k+2*boardSize[1]+2]) {
                         if (boardVals[k+2*boardSize[1]+2] === boardVals[k+3*boardSize[1]+3]) {
@@ -262,12 +263,16 @@ function checkSlantRightWinner (time) {
         }
     }, time);
 }
+//function to check for a winner diagonally left
 function checkSlantLeftWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
+         //for loop going through each row of board, stops 3 from end
         for (i = 0; i < boardSize[0]-3; i++){
+            //for loop going through each column of board, starts at column 3
             for (j = 3; j < boardSize[1]; j++){
                 k = j + i * boardSize[1];
+                //if statements to check for four in a row diagonally left
                 if (boardVals[k] === boardVals[k+boardSize[1]-1] && boardVals[k] != 0) {
                     if (boardVals[k+boardSize[1]-1] === boardVals[k+2*boardSize[1]-2]) {
                         if (boardVals[k+2*boardSize[1]-2] === boardVals[k+3*boardSize[1]-3]) {
