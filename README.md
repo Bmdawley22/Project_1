@@ -5,7 +5,7 @@ Developer: Brady Dawley
 
 Description: 
 
-The classic Connect Four game is now available on the web. The same two player game with the same look and feel as the classic game.  The game involves two players that alternate turns until the game is won.  The object of the game is for a player to connect four game pieces in a row either hroizontally, vertically, or diagonally. Gravity will be present on the screen to present the same feel as the original game. The user selects "clicks" the column they wish to drop the piece and the piece will drop to the correct slot 
+The classic Connect Four game is now available on the web. The same two player game with the same look and feel as the classic game.  The game involves two players that alternate turns until the game is won.  The object of the game is for a player to connect four game pieces in a row either horizonantally, vertically, or diagonally. Gravity will be present on the screen to present the same feel as the original game. The user selects (clicks) the column they wish to drop the piece and the piece will drop to the correct slot 
 
 WireFrame:
 WireFrame.png
