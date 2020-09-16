@@ -156,10 +156,12 @@ function dropPiece () {
     checkSlantRightWinner(totalTime);
     checkSlantLeftWinner(totalTime);
 }
+//for loop to initialize boardVals
 let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
     boardVals.push(0);
 }
+//function to set a boardVals equal to the board values (1 = red, 2 = black)
 function getBoardValues ()  {
     for (i = 0; i < gameBoard.children.length;i++){
         if (allSlots[i].attributes[1].nodeValue === 'RedPiece.png') {
@@ -171,7 +173,9 @@ function getBoardValues ()  {
     }
     
 }
+//variable for flashing winning message on and off
 let onOff = 1;
+
 function check4HorizWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
