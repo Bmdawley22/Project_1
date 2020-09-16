@@ -153,6 +153,7 @@ function dropPiece () {
     changeTurn(totalTime);
     check4HorizWinner(totalTime + 200);
     checkVertWinner(totalTime + 100);
+    checkSlantRightWinner(totalTime + 200);
 }
 let boardVals = []
 for (i = 0; i < gameBoard.children.length;i++) {
@@ -187,6 +188,7 @@ function check4HorizWinner (time) {
                             else {
                                 message.innerText = `Player 2 Wins!`;
                                 message.style.border = 'black solid 8px';
+                                message.style.color = 'black';
                             }    
                             return;        
                         }
@@ -214,6 +216,7 @@ function checkVertWinner (time) {
                             else {
                                 message.innerText = `Player 2 Wins!`;
                                 message.style.border = 'black solid 8px';
+                                message.style.color = 'black';
                             }    
                             return;        
                         }
@@ -223,7 +226,34 @@ function checkVertWinner (time) {
         }
     }, time);
 }
-
+function checkSlantRightWinner (time) {
+    setTimeout(() => {
+        getBoardValues(); 
+        for (i = 0; i < boardSize[0]-3; i++){
+            for (j = 0; j < boardSize[1]-3; j++){
+                k = j + i * boardSize[1];
+                if (boardVals[k] === boardVals[k+boardSize[1]+1] && boardVals[k] != 0) {
+                    if (boardVals[k+boardSize[1]+1] === boardVals[k+2*boardSize[1]+2]) {
+                        if (boardVals[k+2*boardSize[1]+2] === boardVals[k+3*boardSize[1]+3]) {
+                            const winner = userTurn[1].innerText.slice(0,-5);
+                            if (winner === 'Player 2') {
+                                message.innerText = `Player 1 Wins!`;
+                                message.style.color = 'rgb(169, 7, 7)';
+                                message.style.border = 'rgb(169, 7, 7) solid 10px';
+                            }          
+                            else {
+                                message.innerText = `Player 2 Wins!`;
+                                message.style.border = 'black solid 8px';
+                                message.style.color = 'black';
+                            }    
+                            return;        
+                        }
+                    }
+                }
+            }
+        }
+    }, time);
+}
 
 
 
