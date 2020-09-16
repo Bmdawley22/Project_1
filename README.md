@@ -58,6 +58,7 @@ Selecting winner:
 
 Project Challenges:
 - Timing all of the functions out correctly with the game piece dropping
+- Avoiding hard coding (nested if statements) and minimizing repeating code
 
 Unsolved Issues: 
 
