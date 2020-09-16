@@ -48,7 +48,7 @@ function changeTurn (totalTime) {
             
             if (currentPlayer === 1) {
                 userTurn[1].style.color = 'white';
-                userTurn[1].style.border = 'grey solid 10px';
+                userTurn[1].style.border = 'white solid 10px';
                 userTurn[1].style.borderRadius = '10px';
                 userTurn[1].style.backgroundColor = '#12130f';
                 userTurn[1].innerText = 'Player 2 Turn';
@@ -58,7 +58,7 @@ function changeTurn (totalTime) {
             else if (currentPlayer === 2){
                 userTurn[1].style.color = 'white';
                 userTurn[1].style.backgroundColor = 'rgb(169, 7, 7)';
-                userTurn[1].style.border = 'grey solid 10px';
+                userTurn[1].style.border = 'white solid 10px';
                 userTurn[1].style.borderRadius = '10px';
                 userTurn[1].innerText = 'Player 1 Turn';
                 currentPlayer = 1;
@@ -277,22 +277,22 @@ function flashRedWinner () {
     }
     else {
         message.innerText = `Reset Game!`;
-        message.style.color = '#3772FF';
-        message.style.border = '#3772FF solid 10px';
+        message.style.color = 'white';
+        message.style.border = 'white solid 10px';
         onOff = 1;
     }    
 }
 function flashBlackWinner () {
     if (onOff === 1) {
         message.innerText = `Player 2 Wins!`;
-        message.style.border = 'black solid 8px';
         message.style.color = 'black';
+        message.style.border = 'black solid 10px';
         onOff = 0;
     }
     else {
         message.innerText = `Reset Game!`;
-        message.style.color = '#3772FF';
-        message.style.border = '#3772FF solid 10px';
+        message.style.color = 'white';
+        message.style.border = 'white solid 10px';
         onOff = 1;
     }    
 }
