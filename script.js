@@ -327,6 +327,7 @@ function flashBlackWinner () {
         onOff = 1;
     }    
 }
+//function to reset game (reloads page)
 const reset = document.querySelector('#reset');
 reset.addEventListener('click',() => {
     location.reload();
