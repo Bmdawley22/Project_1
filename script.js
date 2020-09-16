@@ -291,6 +291,7 @@ function checkSlantLeftWinner (time) {
         }
     }, time);
 }
+//function used with set interval to flash player 1 wins
 function flashRedWinner () {
     if (onOff === 1) {
         message.innerText = `Player 1 Wins!`;
@@ -300,6 +301,7 @@ function flashRedWinner () {
         message.style.border = 'rgb(169, 7, 7) solid 10px';
         onOff = 0;
     }
+    //informs user to reset game
     else {
         message.innerText = `Reset Game!`;
         message.style.color = '0748e1';
