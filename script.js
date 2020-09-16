@@ -175,17 +175,23 @@ function getBoardValues ()  {
 }
 //variable for flashing winning message on and off
 let onOff = 1;
-
+//function to check for a winner horizontally
 function check4HorizWinner (time) {
+    //waits for game piece to drop
     setTimeout(() => {
         getBoardValues(); 
+        //for loop going through each row of board
         for (i = 0; i < boardSize[0]; i++){
+            //for loop going through each column of boar
             for (j = 0; j < boardSize[1]-3; j++){
-                k = j + i * boardSize[1];
+                k = j + i * boardSize[1]; //variable to run through board
+                //if statements to check for four in a row horizontally
                 if (boardVals[k] === boardVals[k+1] && boardVals[k] != 0) {
                     if (boardVals[k+1] === boardVals[k+2]) {
                         if (boardVals[k+2] === boardVals[k+3]) {
+                            //removes "Turn" from "player 1 (or 2) Turn"
                             const winner = userTurn[1].innerText.slice(0,-5);
+                            //checks for winners, runs flashing message function
                             if (winner === 'Player 2') {
                                 setInterval(flashRedWinner, 800);
                             }          
