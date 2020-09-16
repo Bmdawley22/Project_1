@@ -14,11 +14,11 @@ Project Link:
 https://bmdawley22.github.io/bmdawley.github.io/
 
 Minimal Viable Product Goals:
-    - Display Board
-    - Switch user function
-    - Display arrow icons on for columns to drop game piece
-    - Have some kind of display for the game piece dropping 
-    - Have winning functionality with message
+- Display Board
+- Switch user function
+- Display arrow icons on for columns to drop game piece
+- Have some kind of display for the game piece dropping 
+- Have winning functionality with message
 
 Post-MVP Goals:
     - Add a different shaped board (user chooses between normal and non-normal shape)
