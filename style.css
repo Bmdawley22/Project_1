@@ -2,7 +2,7 @@ header img {
     height: 6vh;
     object-fit: contain;
     vertical-align: middle;
-    padding: 0 0 15px 0;
+    padding: 0 0 10px 0;
 }
 h1 {
     background: #0748e1;
@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: row;
     align-content: center;
-    margin: 10px;
+    margin: 10px auto;
 }
 #reset {
     font-size: 3vh;
