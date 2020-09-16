@@ -206,12 +206,17 @@ function check4HorizWinner (time) {
         }
     }, time);
 }
+//function to check for a winner horizontally
 function checkVertWinner (time) {
+    //waits for game piece to drop
     setTimeout(() => {
         getBoardValues(); 
+        //for loop going through each row of board (stops 3rd to last)
         for (i = 0; i < boardSize[0]-3; i++){
+            //for loop going through each column of board
             for (j = 0; j < boardSize[1]; j++){
-                k = j + i * boardSize[1];
+                k = j + i * boardSize[1];  //variable to run through board
+                //if statements to check for four in a row vertically
                 if (boardVals[k] === boardVals[k+boardSize[1]] && boardVals[k] != 0) {
                     if (boardVals[k+boardSize[1]] === boardVals[k+2*boardSize[1]]) {
                         if (boardVals[k+2*boardSize[1]] === boardVals[k+3*boardSize[1]]) {
@@ -230,10 +235,13 @@ function checkVertWinner (time) {
         }
     }, time);
 }
+//function to check for a winner diagonally right
 function checkSlantRightWinner (time) {
     setTimeout(() => {
         getBoardValues(); 
+        //for loop going through each row of board, stops 3 from end
         for (i = 0; i < boardSize[0]-3; i++){
+            //for loop going through each column of board, stops 3 from end
             for (j = 0; j < boardSize[1]-3; j++){
                 k = j + i * boardSize[1];
                 if (boardVals[k] === boardVals[k+boardSize[1]+1] && boardVals[k] != 0) {
