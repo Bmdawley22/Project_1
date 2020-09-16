@@ -108,7 +108,7 @@ function change2GamePiece(index, i, gamePiece, holdTime, dropTime, rate) {
 
 //Starts game with player 1's turn
 changeTurn();
-//event listner function when arrow is clicked
+//event listener function when arrow is clicked
 function dropPiece () {
     //gets slot index where piece is dropped
     const index = Array.from(event.target.parentElement.children).indexOf(event.target);
@@ -299,10 +299,11 @@ function flashBlackWinner () {
         onOff = 1;
     }    
 }
-
+console.log()
 const reset = document.querySelector('#reset');
 reset.addEventListener('click',() => {
     location.reload();
+    
 })
 
 
