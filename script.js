@@ -300,3 +300,9 @@ function flashBlackWinner () {
     }    
 }
 
+const reset = document.querySelector('#reset');
+reset.addEventListener('click',() => {
+    location.reload();
+})
+
+
